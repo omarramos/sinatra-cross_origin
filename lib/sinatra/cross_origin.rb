@@ -29,7 +29,7 @@ module Sinatra
         return unless request.env['HTTP_ORIGIN']
         settings.set hash if hash
 
-        origin = settings.allow_origin == :any ? request.env['HTTP_ORIGIN'] : settings.allow_origin
+        origin = settings.allow_origin == :any ? '*' : settings.allow_origin
         methods = settings.allow_methods.map{ |m| m.to_s.upcase! }.join(', ')
 
         headers 'Access-Control-Allow-Origin' => origin,
